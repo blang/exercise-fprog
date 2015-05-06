@@ -16,7 +16,7 @@ facs n = [k | i<-[0..n], let k = fac i]
 genList :: (Integer->a) -> Integer -> [a]
 genList f n  = [k | i<-[0..(n-1)], let k = f i]
 
-testGenList = genList id 10
+testGenList = genList id 10 == [0,1,2,3,4,5,6,7,8,9]
 
 isPrime :: Integer->Bool
 isPrime x = null [y | y<-[2..floor (sqrt (fromIntegral x))], x `mod` y == 0]
