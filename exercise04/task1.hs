@@ -1,5 +1,5 @@
 module Task1 where
-
+import Data.Char
 -- foldl :: (a -> b -> a) -> a -> [b] -> a
 
 sumlen :: [Integer] -> Double
@@ -20,3 +20,12 @@ testSumlen :: [Integer] -> Bool
 testSumlen x = (sumlen x) == (sumlen' x)
 
 
+makeUpper :: String -> (Int, String)
+makeUpper l = (c, str) where
+				red :: (Int, [Char]) -> Char -> (Int, [Char])
+				red (x, y) n
+							| isLower n = (x+1, y ++ [(toUpper n)])
+							| otherwise = (x, y ++ [n])
+				(c, str) = foldl red (0, []) l
+
+testMakeUpper = makeUpper "LoremIpsum" == (8, "LOREMIPSUM")
