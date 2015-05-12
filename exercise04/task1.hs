@@ -1,7 +1,7 @@
 module Task1 where
 import Data.Char
--- foldl :: (a -> b -> a) -> a -> [b] -> a
 
+-- Teilaufgabe a
 sumlen :: [Integer] -> Double
 sumlen l = avg where
                 red :: (Integer, Integer) -> Integer -> (Integer, Integer)
@@ -9,7 +9,7 @@ sumlen l = avg where
                 (sum, len) = foldl red (0,0) l
                 avg = (fromIntegral sum) / (fromIntegral len)
 
-
+-- Naive Implementierung
 sumlen' :: [Integer] -> Double
 sumlen' l = avg where
                 sum = foldl (+) 0 l
@@ -19,7 +19,7 @@ sumlen' l = avg where
 testSumlen :: [Integer] -> Bool
 testSumlen x = (sumlen x) == (sumlen' x)
 
-
+-- Teilaufgabe b
 makeUpper :: String -> (Int, String)
 makeUpper l = (c, str) where
                 red :: (Int, [Char]) -> Char -> (Int, [Char])
@@ -30,7 +30,7 @@ makeUpper l = (c, str) where
 
 testMakeUpper = makeUpper "LoremIpsum" == (8, "LOREMIPSUM")
 
-
+-- Teilaufgabe c
 evalPoly :: Num a => [a] -> a -> a
 evalPoly l x =  let
                     red :: Num a => a -> a -> a -> a
